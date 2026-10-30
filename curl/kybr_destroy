@@ -1,0 +1,7 @@
+#!/bin/sh
+# Usage: kybr_destroy VM_UUID
+VM_ID="${1}"
+
+curl -sS -X POST -H "${AUTH}" ${API}/v1/vms/${VM_ID}/destroy|jq
+
+exit 0
