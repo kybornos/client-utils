@@ -5,7 +5,7 @@ API usage examples with cURL can be found under `curl/`. These assume the `API` 
 Example:
 
 ```shell
-export API=https://api.internal.kybornos.com:8443
+export API=https://api0.secure.t1ops.net:8443
 export API_KEY=1234567890
 ```
 
@@ -66,3 +66,32 @@ $ kybr_console 01a18d26-a2d8-7657-bbb6-7cf9e2732913
 After this open the browser at https://api0.secure.t1ops.net:10443 to access the VM's serial console:
 
 ![Serial Console](images/console.png)
+
+*Note: console and API access is only accessible over Wireguard.*
+
+## Stop VM
+
+``` shell
+$ kybr_stop 01a18d26-a2d8-7657-bbb6-7cf9e2732913
+{
+  "status": "ok"
+}
+```
+
+## Start VM
+
+``` shell
+$ kybr_start 01a18d26-a2d8-7657-bbb6-7cf9e2732913
+{
+  "status": "ok"
+}
+```
+
+## Destroy VM
+
+``` shell
+$ kybr_destroy 01a18d26-a2d8-7657-bbb6-7cf9e2732913
+{
+  "status": "ok"
+}
+```
