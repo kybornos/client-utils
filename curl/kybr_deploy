@@ -1,0 +1,10 @@
+#!/bin/sh
+# Usage: kybr_deploy deploy.json
+
+JSON_FILE="$1"
+
+curl -sS -X POST -H "${AUTH}" \
+  -H 'Content-Type: application/json' \
+  --data-binary @${JSON_FILE} ${API}/v1/vms/deploy|jq
+
+exit 0

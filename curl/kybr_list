@@ -1,0 +1,21 @@
+#!/bin/ksh
+# Usage: kybr_list
+
+curl -sS -H "${AUTH}" \
+  ${API}/v1/vms/list | \
+  jq -r '
+   ["ID", "CPUS", "MEMORY", "DISK", "STATE", "PUBLIC", "IP", "NAME"],
+   (.data[] | [
+     .id,
+     "\(.data.size.cpu)",
+     "\(.data.size.memory)M",
+     "\(.data.size.disk)M",
+     .state,
+     .data.public,
+     "\(.data.interfaces.[].ip4)",
+     .vm_name
+   ])
+   | @tsv
+ ' | column -t
+
+exit 0
